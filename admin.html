@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>ZIGSHOP — Espace admin</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    body{background:#f4f7fa}.ah{display:flex;justify-content:space-between;align-items:center;padding:16px 5%;background:#fff;border-bottom:1px solid #e3eaf0;position:sticky;top:0;z-index:5}
+    .ah>div{display:flex;gap:8px}.ghost{border:1px solid #d8e2eb;background:#fff;color:#173d65;border-radius:99px;padding:10px 16px;font:600 12px "DM Sans";cursor:pointer;text-decoration:none;transition:.2s}.ghost:hover{background:#eef5fb}
+    main{max-width:1000px;margin:28px auto;padding:0 5% 60px}.card{background:#fff;border-radius:16px;padding:24px;box-shadow:0 2px 12px #123b680d;margin-bottom:22px}.narrow{max-width:420px;margin:60px auto}
+    h2{font:600 24px "Playfair Display";color:#173b5d;margin:0 0 16px}label{display:block;font:600 11px "DM Sans";color:#5d6f80;margin:12px 0 5px}
+    input:not([type=checkbox]):not([type=file]),select,textarea{width:100%;padding:12px 13px;border:1px solid #d8e2eb;border-radius:10px;font:13px "DM Sans";background:#fff}input:focus,select:focus,textarea:focus{border-color:#3978b5;outline:0}
+    .row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}.chk{display:flex;align-items:center;gap:8px;margin-top:14px;font:500 13px "DM Sans";color:#243d55}.chk input{width:auto}
+    .imgbox{display:flex;gap:14px;align-items:center}.imgbox img{width:84px;height:105px;object-fit:cover;border-radius:10px;background:#e7edf2}
+    .actions{display:flex;gap:10px;margin-top:18px;flex-wrap:wrap}.tabs2{display:flex;gap:6px;margin-bottom:18px;background:#e6edf3;border-radius:99px;padding:4px;width:fit-content}
+    .tabs2 button{border:0;background:none;padding:10px 22px;border-radius:99px;font:600 12px "DM Sans";color:#6c7d8e;cursor:pointer}.tabs2 button.on{background:#fff;color:#123b68;box-shadow:0 2px 8px #123b681f}
+    .p{display:flex;gap:14px;align-items:center;padding:12px 0;border-bottom:1px solid #edf1f4}.p:last-child{border:0}.p img,.p .ph{width:54px;height:68px;object-fit:cover;border-radius:8px;flex:none;background:#c5d0d9}
+    .p .info{flex:1;min-width:0;font-size:13px;color:#243d55}.p small{color:#8193a3;font-size:11px}.off{opacity:.5}.p .btns{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end}
+    .mini{border:1px solid #d8e2eb;background:#fff;border-radius:99px;padding:7px 12px;font:600 11px "DM Sans";cursor:pointer;color:#173d65}.mini:hover{background:#eef5fb}.mini.del{color:#9b5c5c}
+    .o{border:1px solid #e8edf1;border-radius:14px;padding:16px;margin-bottom:12px;font-size:13px;color:#243d55;line-height:1.6}.o .top{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}.o ul{margin:8px 0;padding-left:18px}
+    .o select{width:auto;padding:8px 10px;margin-right:6px}.err{color:#9b5c5c;font-size:12px;margin-top:10px}
+    @media(max-width:700px){.row{grid-template-columns:1fr}.p{flex-wrap:wrap}.p .btns{justify-content:flex-start}}
+  </style>
+</head>
+<body>
+  <header class="ah">
+    <a class="brand" href="index.html">ZIG<span>SHOP</span><small>ESPACE ADMIN</small></a>
+    <div><a class="ghost" href="index.html">← Boutique</a><button class="ghost" id="logout" hidden>Déconnexion</button></div>
+  </header>
+  <main>
+    <section id="login" class="card narrow" hidden>
+      <h2>Connexion admin</h2>
+      <form id="login-form"><label>Email</label><input name="email" type="email" required autocomplete="email"><label>Mot de passe</label><input name="password" type="password" required autocomplete="current-password">
+      <div class="actions"><button class="primary-button" type="submit" style="width:100%;justify-content:center">Me connecter</button></div></form>
+    </section>
+    <section id="denied" class="card narrow" hidden>
+      <h2>Accès refusé</h2>
+      <p id="denied-msg" style="font-size:13px;color:#5d6f80;line-height:1.7">Ce compte n'est pas administrateur. Déconnectez-vous puis connectez-vous avec le compte admin.</p>
+    </section>
+    <section id="panel" hidden>
+      <div class="tabs2"><button data-t="products" class="on">Produits</button><button data-t="orders">Commandes</button></div>
+      <div id="tab-products">
+        <form id="pform" class="card">
+          <h2 id="ptitle">Ajouter un produit</h2>
+          <label>Nom du produit</label><input name="name" required maxlength="120" placeholder="Ex. Chemise en lin">
+          <label>Description (optionnel)</label><textarea name="description" rows="2" maxlength="600"></textarea>
+          <div class="row">
+            <div><label>Catégorie</label><select name="category"><option value="homme">Homme</option><option value="femme">Femme</option></select></div>
+            <div><label>Prix (FCFA)</label><input name="price" type="number" min="0" step="500" required placeholder="15000"></div>
+            <div><label>Stock</label><input name="stock" type="number" min="0" required value="10"></div>
+          </div>
+          <label>Photo (JPG, PNG ou WebP — réduite automatiquement)</label>
+          <div class="imgbox"><img id="preview" alt="" hidden><div><input type="file" id="file" accept="image/jpeg,image/png,image/webp"><div><button type="button" class="mini" id="rmimg" hidden style="margin-top:8px">Retirer la photo</button></div></div></div>
+          <label class="chk"><input type="checkbox" name="active" checked> Visible sur la boutique</label>
+          <div class="actions"><button class="primary-button" type="submit" id="psave">Enregistrer le produit</button><button type="button" class="ghost" id="pcancel" hidden>Annuler la modification</button></div>
+        </form>
+        <div class="card"><h2>Mes produits <small id="pcount" style="font:12px 'DM Sans';color:#8193a3"></small></h2><div id="plist"></div></div>
+      </div>
+      <div id="tab-orders" hidden><div id="olist"></div></div>
+    </section>
+  </main>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="config.js"></script>
+  <script src="admin.js"></script>
+</body>
+</html>
