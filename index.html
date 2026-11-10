@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="ZIGSHOP — vêtements et chaussures pour hommes et femmes au Sénégal.">
+  <meta name="theme-color" content="#123b68">
+  <title>ZIGSHOP — Mode & chaussures</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="topline">Livraison disponible au Sénégal · Paiement Wave & Orange Money bientôt activé</div>
+  <header class="site-header" id="top">
+    <a class="brand" href="#" aria-label="ZIGSHOP accueil">ZIG<span>SHOP</span><small>MODE & CHAUSSURES</small></a>
+    <nav aria-label="Navigation principale">
+      <a href="#nouveautes">Nouveautés</a><a href="#homme">Homme</a><a href="#femme">Femme</a><a href="#contact">Contact</a>
+    </nav>
+    <div class="header-actions"><button class="account-button" id="account-toggle" aria-label="Mon compte">👤 <span id="account-label">Se connecter</span></button><button class="cart-button" id="cart-toggle" aria-label="Ouvrir le panier">🛍 Panier <b id="cart-count">0</b></button></div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">LA SÉLECTION ZIGSHOP</p>
+        <h1>Le style qui<br><em>vous ressemble.</em></h1>
+        <p class="hero-text">Découvrez une sélection de vêtements et chaussures pour elle et lui. Un style élégant, au quotidien.</p>
+        <a class="primary-button" href="#homme">Découvrir la collection <span class="arrow">→</span></a>
+        <div class="hero-note"><span class="dot"></span> Nouvelle collection · Sélection 2026</div>
+      </div>
+      <div class="hero-art" role="img" aria-label="Composition mode élégante avec vêtements et chaussures">
+        <div class="art-label">COLLECTION<br><strong>ESSENTIELS</strong></div>
+        <div class="art-circle"></div>
+        <div class="art-card art-card-one">Z<span>S</span></div>
+        <div class="art-card art-card-two">ÉLÉGANCE<br><b>AU QUOTIDIEN</b></div>
+      </div>
+    </section>
+
+    <section class="benefits" aria-label="Avantages">
+      <div><span>01</span><p><b>Style sélectionné</b><small>Des essentiels pour tous</small></p></div>
+      <div><span>02</span><p><b>Paiement mobile</b><small>Wave & Orange Money prévus</small></p></div>
+      <div><span>03</span><p><b>Service client</b><small>À votre écoute</small></p></div>
+    </section>
+
+    <section class="collection section" id="nouveautes">
+      <div class="section-heading"><div><p class="eyebrow">À DÉCOUVRIR</p><h2>Nos sélections</h2></div><p>Une première sélection pour composer votre style.</p></div>
+      <div class="category-grid">
+        <a class="category category-men" href="#homme"><span>POUR LUI</span><strong>Collection homme</strong><i>Explorer →</i></a>
+        <a class="category category-women" href="#femme"><span>POUR ELLE</span><strong>Collection femme</strong><i>Explorer →</i></a>
+      </div>
+    </section>
+
+    <section class="products section" id="homme">
+      <div class="section-heading"><div><p class="eyebrow">LA BOUTIQUE</p><h2>Nos articles</h2></div><div class="filters"><button class="filter active" data-filter="tous">Tout voir</button><button class="filter" data-filter="homme">Homme</button><button class="filter" data-filter="femme">Femme</button></div></div>
+      <div class="product-grid" id="product-grid"></div>
+      <p class="demo-note">Les articles affichés sont des exemples de présentation. Les produits, photos et prix définitifs seront ajoutés dans votre espace boutique.</p>
+    </section>
+
+    <section class="newsletter section" id="femme">
+      <div><p class="eyebrow">RESTONS EN CONTACT</p><h2>Le bon style,<br>au bon moment.</h2></div>
+      <p>Besoin d'un renseignement ou envie de commander ? Contactez notre équipe pour connaître les disponibilités.</p>
+      <a class="light-button" href="#contact">Nous contacter <span class="arrow">→</span></a>
+    </section>
+  </main>
+
+  <footer id="contact">
+    <a class="brand footer-brand" href="#">ZIG<span>SHOP</span><small>MODE & CHAUSSURES</small></a>
+    <p>Votre boutique mode au Sénégal.</p>
+    <p class="footer-small">© 2026 ZIGSHOP. Tous droits réservés.</p>
+  </footer>
+
+  <div class="cart-overlay" id="cart-overlay" aria-hidden="true">
+    <div class="cart-panel" role="dialog" aria-modal="true" aria-labelledby="cart-title">
+      <div class="cart-head"><h2 id="cart-title">Votre panier</h2><button id="cart-close" aria-label="Fermer">✕</button></div>
+      <div id="cart-items" class="cart-items"><p class="empty-cart">Votre panier est vide pour le moment.</p></div>
+      <div class="cart-bottom">
+        <div class="total-line"><span>Total</span><strong id="cart-total">0 FCFA</strong></div>
+        <form id="checkout-form" hidden>
+          <input name="name" placeholder="Nom complet" required minlength="2" maxlength="100" autocomplete="name">
+          <input name="phone" type="tel" placeholder="Téléphone (ex. 77 123 45 67)" required minlength="8" maxlength="20" autocomplete="tel">
+          <input name="address" placeholder="Adresse de livraison" required minlength="5" maxlength="250" autocomplete="street-address">
+          <div class="pay-choice"><label><input type="radio" name="method" value="wave" checked><span>Wave</span></label><label><input type="radio" name="method" value="orange_money"><span>Orange Money</span></label></div>
+          <button class="primary-button checkout-button" type="submit" id="submit-order">Envoyer ma commande</button>
+        </form>
+        <button class="primary-button checkout-button" id="checkout-button">Commander <span class="arrow">→</span></button>
+        <small>Votre commande est enregistrée, puis nous vous contactons pour confirmer la livraison et le paiement.</small>
+      </div>
+  </div>
+  <div class="modal" id="modal" aria-hidden="true"><div class="modal-box" id="modal-box" role="dialog" aria-modal="true"></div></div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="config.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
