@@ -1,6 +1,4 @@
-// Renseignez ces 2 valeurs depuis Supabase > Project Settings > API.
-// La clé "anon" est publique par conception (protégée par les règles RLS). Jamais la clé service_role.
 window.ZIGSHOP_CONFIG = {
-  SUPABASE_URL: "",       // ex. https://abcdxyz.supabase.co
-  SUPABASE_ANON_KEY: ""   // clé publique "anon"
+  SUPABASE_URL: "https://qfkvwzyuptsegdmvtoox.supabase.co/rest/v1/",
+  SUPABASE_ANON_KEY: "sb_publishable_1LGh9EuyUvsO_IpFX5AkCQ_qYrdJhbx"
 };
